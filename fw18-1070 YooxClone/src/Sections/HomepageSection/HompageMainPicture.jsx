@@ -1,4 +1,5 @@
-import BackgPic from "../Components/HomepageMainPicComps/BackgPic";
+import BackgPic from "../../Components/HomepageMainPicComps/BackgPic";
+
 
 export default function HomepageMainPicture(){
 

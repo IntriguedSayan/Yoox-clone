@@ -1,4 +1,5 @@
-import BfS from "../Components/BeforeFooter/BfS";
+import BfS from "../../Components/BeforeFooter/BfS";
+
 
 export default function TwoPic(){
 
