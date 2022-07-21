@@ -2,9 +2,9 @@
 
 .TopSec{
     width: 90%;
-    height: auto;
+    height: 35px;
     display: flex;
-    /* margin: auto; */
+    background-color: white;;
     font-family:"Montserrat",sans-serif;
     border-bottom: 1px solid gray;
     justify-content: center;

@@ -2,10 +2,10 @@ import { Box, Flex,Image } from "@chakra-ui/react";
 
 import "./NavbarMiddle.css"
 
-export default function NavbarMiddle(){
+export default function NavbarMiddle({mt}){
 
     return(
-        <Box className="MiddleSec">
+        <Box className="MiddleSec" mt={mt} >
             <Flex justify="center" gap="1rem" >
                 <h2>WOMEN</h2>
                 <h2>MEN</h2>
