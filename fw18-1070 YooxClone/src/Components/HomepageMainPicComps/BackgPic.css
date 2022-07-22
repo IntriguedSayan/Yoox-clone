@@ -4,20 +4,25 @@
 }
 
 .MainPic{
-    width: 90%;
+    width: 100%;
     margin: auto;
-    
+    margin-top: 150px;
+    margin-left: 5%;
+    /* position: absolute;
+    top: 150px; */
     
 }
 
 .text{
+    width: 27%;
+    height: 9%;
     background-color: white;
     display: flex;
     flex-direction: column;
     padding: 2rem;
     gap: 1rem;
     position: absolute;
-    bottom: 65%;
+    bottom: 70%;
     margin-left: 2.5%;
 }
 #textBold{
