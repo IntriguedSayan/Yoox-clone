@@ -10,20 +10,20 @@
     flex-direction: column;
     padding: 2rem;
     gap: 1rem;
-    position: absolute;
+    /* position: absolute;
     bottom: 35%;
-    margin-left: 2.5%;
+    margin-left: 2.5%; */
 }
 .textsTwo{
     background-color: white;
-    height: 7%;
+    height: 3%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 2rem;
     gap: 1rem;
-    position: absolute;
+    /* position: absolute;
     bottom: 35%;
-    margin-left: 15%;
+    margin-left: 15%; */
 }

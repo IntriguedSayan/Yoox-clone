@@ -3,44 +3,27 @@ import ThreePic from "../../Components/ProductPageComps/ThreePic";
 import { useState } from "react";
 import { useEffect } from "react";
 import Carousel from "../../Components/ProductPageComps/Carousel";
-import "./MenProductPage.css"
+import "./WomenProductPage.css"
 import LeftSd from "../../Components/ProductPageComps/LeftSdComp";
 import ThreePicTwo from "../../Components/ProductPageComps/ThreePicTwo";
 import BeforeProductFooter from "../../Components/ProductPageComps/BeforeProductFooter";
 import Navbar from "../HomepageSection/Navbar";
 import BfS from "../../Components/BeforeFooter/BfS";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
-import axios from "axios"
 
-export default function MenProductPage(){
+export default function WomenProductPage(){
 
     const [data,setData]=useState([])
     const [dataTwo,setDataTwo]=useState([])
     const[page,setPage]=useState(1)
     const [pageTwo,setPAgeTwo]=useState(1)
     
-    const handleAdd=(id,elem)=>{
-        console.log(id,elem)
-        axios.post(`https://yooxdb.herokuapp.com/Cart`,{
-            id:id,
-            Avatar:elem.avatar,
-            brand:elem.Brand,
-            Type:elem.type,
-            StrikedOfPrice:elem.strikedOfPrice,
-            discount:elem.Discount,
-            price:elem.Price
-        })
-        .then((res)=>console.log(res))
-        .catch((err)=>console.log(err))
-
-    }
-
     useEffect(()=>{
-        fetch(`https://yooxdb.herokuapp.com/MenNew?_page=${page}&_limit=3`)
+        fetch(`https://yooxdb.herokuapp.com/WomenNew?_page=${page}&_limit=3`)
         .then((res)=>res.json())
         .then((res)=>setData(res))
         .catch((err)=>console.log(err))
-        fetch(`https://yooxdb.herokuapp.com/MenOne?_page=${pageTwo}&_limit=3`)
+        fetch(`https://yooxdb.herokuapp.com/WomenOne?_page=${pageTwo}&_limit=3`)
         .then((resTwo)=>resTwo.json())
         .then((resTwo)=>setDataTwo(resTwo))
         .catch((errTwo)=>console.log(errTwo))
@@ -59,9 +42,9 @@ export default function MenProductPage(){
                 {
                     data.map((elem)=>(
                         <Carousel key={elem.id}
-                          src={elem.avatar} Brand={elem.Brand} id={elem.id} elem={elem}
+                          src={elem.avatar} Brand={elem.Brand}
                           type={elem.type} StrikedPrice={elem.strikedOfPrice}
-                           discount={elem.Discount} handleClick={handleAdd} price={elem.Price}/>
+                           discount={elem.Discount} price={elem.Price}/>
                     ))
                 }
                 <Button backgroundColor="#333333"
@@ -78,7 +61,7 @@ export default function MenProductPage(){
                 position="absolute" left="1%" bottom="43%"><Text fontSize="3xl" color="white">⇦</Text></Button>
                 {
                     dataTwo.map((elem)=>(
-                        <Carousel key={elem.id} id={elem.id} elem={elem} handleClick={handleAdd}
+                        <Carousel key={elem.id}
                           src={elem.avatar} Brand={elem.Brand}
                           type={elem.type} StrikedPrice={elem.strikedOfPrice}
                           discount={elem.Discount} price={elem.Price}/>
@@ -95,4 +78,5 @@ export default function MenProductPage(){
             </Box>
 
     )
+
 }
