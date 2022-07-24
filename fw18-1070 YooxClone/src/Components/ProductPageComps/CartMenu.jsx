@@ -24,7 +24,7 @@ import { NavLink } from 'react-router-dom'
     👜  
   </MenuButton>
     <MenuList>
-        <NavLink to="/cart" ><Text fontSize="smaller" display="inline-block" borderBottom="1px solid lawngreen"><b>Shopping Cart</b></Text></NavLink>
+        <NavLink to="/cart"><Text fontSize="smaller" display="inline-block" backgroundColor="salmon"color="white" border="2px solid teal"><b> GO To Shopping Cart</b></Text></NavLink>
         {
                data.length===0?<Text>Your Shopping Cart is Empty</Text>:data.map((elem)=>(
                 <MenuItem minH="100px" key={elem.id}>

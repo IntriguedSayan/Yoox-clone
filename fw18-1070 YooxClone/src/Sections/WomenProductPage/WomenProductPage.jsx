@@ -10,6 +10,7 @@ import BeforeProductFooter from "../../Components/ProductPageComps/BeforeProduct
 import Navbar from "../HomepageSection/Navbar";
 import BfS from "../../Components/BeforeFooter/BfS";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
+import axios from "axios"
 
 export default function WomenProductPage(){
 
@@ -18,6 +19,23 @@ export default function WomenProductPage(){
     const[page,setPage]=useState(1)
     const [pageTwo,setPAgeTwo]=useState(1)
     
+    const handleAdd=(id,elem)=>{
+        console.log(id,elem)
+        axios.post(`https://yooxdb.herokuapp.com/Cart`,{
+            id:id,
+            Avatar:elem.avatar,
+            brand:elem.Brand,
+            Type:elem.type,
+            StrikedOfPrice:elem.strikedOfPrice,
+            discount:elem.Discount,
+            price:elem.Price,
+            Qt:1 
+        })
+        .then((res)=>console.log(res))
+        .catch((err)=>console.log(err))
+
+    }
+
     useEffect(()=>{
         fetch(`https://yooxdb.herokuapp.com/WomenNew?_page=${page}&_limit=3`)
         .then((res)=>res.json())
@@ -42,9 +60,9 @@ export default function WomenProductPage(){
                 {
                     data.map((elem)=>(
                         <Carousel key={elem.id}
-                          src={elem.avatar} Brand={elem.Brand}
+                          src={elem.avatar} Brand={elem.Brand} id={elem.id} elem={elem}
                           type={elem.type} StrikedPrice={elem.strikedOfPrice}
-                           discount={elem.Discount} price={elem.Price}/>
+                           discount={elem.Discount} handleClick={handleAdd} price={elem.Price}/>
                     ))
                 }
                 <Button backgroundColor="#333333"
@@ -61,7 +79,7 @@ export default function WomenProductPage(){
                 position="absolute" left="1%" bottom="43%"><Text fontSize="3xl" color="white">⇦</Text></Button>
                 {
                     dataTwo.map((elem)=>(
-                        <Carousel key={elem.id}
+                        <Carousel key={elem.id} id={elem.id} elem={elem} handleClick={handleAdd}
                           src={elem.avatar} Brand={elem.Brand}
                           type={elem.type} StrikedPrice={elem.strikedOfPrice}
                           discount={elem.Discount} price={elem.Price}/>
@@ -78,5 +96,4 @@ export default function WomenProductPage(){
             </Box>
 
     )
-
 }

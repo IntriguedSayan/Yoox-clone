@@ -1,7 +1,7 @@
 import { Box,Flex, Image, Text } from "@chakra-ui/react";
 import "./BfS.css"
 
-export default function BfS({bottom,left,bottomTwo,leftTwo}){
+export default function BfS({bottom,left,bottomTwo,leftTwo,height}){
 
     return(
     <Flex m="auto" width="90%" mt="2%" >
@@ -17,7 +17,7 @@ export default function BfS({bottom,left,bottomTwo,leftTwo}){
             </Box>
             <Box>
                 <Image src="https://www.yoox.com/images/yoox80/banners/6895_2_GenZ_Pride_WM_Half.jpg?634485886869569819#width=689&height=637" position="relative" width="100%"  height="95%" />
-                    <Box className="textsTwo" position="absolute" bottom={bottomTwo} left={leftTwo}> 
+                    <Box className="textsTwo" position="absolute" bottom={bottomTwo} left={leftTwo} height={height}> 
                         <Text fontSize="2xl"  >JUST LOVE YOURSELF</Text>
                         <Text fontSize="sm"  >Share your pride</Text>
                         <Flex gap="1rem" >

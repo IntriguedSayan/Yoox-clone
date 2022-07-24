@@ -28,7 +28,8 @@ export default function MenProductPage(){
             Type:elem.type,
             StrikedOfPrice:elem.strikedOfPrice,
             discount:elem.Discount,
-            price:elem.Price
+            price:elem.Price,
+            Qt:1 
         })
         .then((res)=>console.log(res))
         .catch((err)=>console.log(err))

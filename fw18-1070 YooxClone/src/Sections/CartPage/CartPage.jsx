@@ -1,38 +1,66 @@
-import { Box, Button, Flex, Heading, Highlight, Icon, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Heading, Highlight, Icon, Image, Text } from "@chakra-ui/react";
 import CartPageNav from "./CartPageNav";
 import {GrPaypal} from "react-icons/gr"
 import { useEffect } from "react";
 import { useState } from "react";
 import {Table, Thead,Tbody,Tfoot,Tr,Th,Td,TableCaption,TableContainer,} from '@chakra-ui/react'
+import axios from "axios";
 
 export default function CartPage(){
 
-    let newPrice;
+    
     const[data,setData]=useState([])
-    const[qty,setQty]=useState(1)
-
-        useEffect(()=>{
-            fetch(`https://yooxdb.herokuapp.com/Cart`)
-            .then((res)=>res.json())
-            .then((res)=>setData(res))
-            .catch((err)=>console.log(err))
-
-        },[data])
-const handleInc=(id,price)=>{
-    console.log(id,price)
-    let Qt=((id-(id-1))+1) 
-    newPrice=Number(price*Qt)
+    const[ship,setShip]=useState({stndrd:false,
+                                    exprss:false})
+    
+let Total;
+const standard=9.49;
+const express=19.95;
+        
+const handleQty=(id,amount)=>{
+    
+     data.map((elem)=>{
+        if(elem.id===id){
+            axios.patch( `https://yooxdb.herokuapp.com/Cart/${id}`,{
+                Qt:elem.Qt+amount
+            })
+        }else{
+            return elem
+        }
+     })
+       
 
 }
-const handleDec=()=>{
+const CalculateTotal=(data)=>{
+        let tot= data.reduce((acc,elem)=>acc+(Number(elem.Qt)*Number(elem.price)),0)
+        if(ship.stndrd){
+            tot=tot+standard
+        }else if(ship.exprss){
+            tot=tot+express
+        }
+        return tot
+}
+const handleChange=(e)=>{
+    const{name,checked}=e.target 
+    setShip({
+        ...ship,[name]:checked
+    })
 
 }
+useEffect(()=>{
+    fetch(`https://yooxdb.herokuapp.com/Cart`)
+    .then((res)=>res.json())
+    .then((res)=>setData(res))
+    .catch((err)=>console.log(err))
+
+},[data])
+
 
             return(
                 <Box>
                     <CartPageNav/>
                     <Flex mt="5%" direction="column" >
-                        <Heading mb="4%" ml="40%"><Highlight query='SHOPPING CART' styles={{ px: '1', py: '1', bg: 'yellow.200' }}>SHOPPING CART</Highlight></Heading>
+                        <Heading mb="4%" ml="40%"><Highlight key="shopping Cart" query='SHOPPING CART' styles={{ px: '1', py: '1', bg: 'yellow.200' }}>SHOPPING CART</Highlight></Heading>
                         <Flex gap="40%">
                             <Text width="250px" ml="2%"><b>BACK TO SHOPPING</b></Text>
                            <Flex gap="4%"marginRight="-80%">
@@ -57,7 +85,7 @@ const handleDec=()=>{
                         <Tbody>
                             {
                                 data.map((elem,ind)=>(
-                                    <Tr id={elem.id} >
+                                    <Tr id={elem.id} key={elem.id} >
                                         <Td key={elem.id}>{Number(ind)+1}</Td>
                                         <Td>{<Image src={elem.Avatar} width="75px"/>}</Td>
                                         <Td><Flex direction="column"  gap="5%">
@@ -65,17 +93,26 @@ const handleDec=()=>{
                                             <Text>{elem.Type}</Text>
                                             </Flex></Td>
                                         <Td><Flex>
-                                            <Button colorScheme="orange" onClick={()=>handleDec(id)}
-                                             disabled={qty===1} width="70px">-</Button>
-                                            <Text>{(elem.id-(elem.id-1))}</Text>
-                                            <Button colorScheme="orange" onClick={()=>handleInc(elem.id,elem.price)} width="70px">+</Button>
+                                            <Button colorScheme="orange" onClick={()=>handleQty(elem.id,-1)}
+                                             disabled={elem.Qt===1} width="70px">-</Button>
+                                            <Text>{elem.Qt}</Text>
+                                            <Button colorScheme="orange" onClick={()=>handleQty(elem.id,+1)} width="70px">+</Button>
                                             </Flex>
                                             </Td>
-                                        <Td>${newPrice?newPrice:elem.price}</Td>       
+                                        <Td>${Number(elem.Qt)*Number(elem.price)}</Td>       
                                     </Tr>
                                 ))
                             }
                         </Tbody>
+                        <Tfoot>
+                            <Tr>
+                                <Th><Checkbox name="stndrd" onChange={handleChange}><Text>STANDARD SHIPPING: ${standard}</Text></Checkbox></Th>
+                                <Th><Checkbox name="exprss" onChange={handleChange}><Text>EXPRESS SHIPPING: ${express}</Text></Checkbox></Th>
+                                <Th><b>TOTAL</b></Th>
+                                <Th><b>AMOUNT:</b></Th>
+                                <Th><b>${Total=CalculateTotal(data)}</b></Th>
+                            </Tr>
+                        </Tfoot>
                         </Table>
                     </TableContainer>
                 </Box>
