@@ -16,10 +16,15 @@ const initData={
     genStatus:false,
     terms:true
 }
+const logInInitData={
+    email:"",
+    password:""
+}
 export default function SignUpAndLogInPage(){
     const[signUpData,setSignUpData]=useState(initData)
-    let[signUpDone,setSignUpDone]=useState(false)
-
+    const[signUpDone,setSignUpDone]=useState(false)
+    const[logInData,setLogInData]=useState(logInInitData)
+    const[logInDone,setLogInDone]=useState(false)
     const handleChange=(e)=>{
         let valueToUpdate;
         const{name,value,type,checked}=e.target
@@ -38,19 +43,39 @@ export default function SignUpAndLogInPage(){
         e.preventDefault()
         console.log(signUpData)
         if(signUpData.firstName.length!==0&&signUpData.email.length!==0&&signUpData.lastName.length!==0&&signUpData.password.length!==0&&signUpData.genStatus!==false&&signUpData.terms!==false){
-                signUpDone=true
-                alert("Registration Successful")
+                setSignUpDone(true)
+                // alert("Registration Successful")
                 
+        }else{
+            alert("PLease Fill all the credentials correctly")
         }
+
+    }
+    const handleLogInChange=(e)=>{
+        const{name,value}=e.target
+        
+        setLogInData({
+            ...logInData,[name]:value
+        })
+
+    }
+    const handleLogInClick=()=>{
+        logInData.email===signUpData.email&&logInData.password===signUpData.password?alert("LogIn Successfull"):alert("Please insert the correct email or password") 
 
     }
     
 
     return(
+        
         <Box>
-        <NavbarSignUp/>
+           
+        <NavbarSignUp handleChange={handleLogInChange} handleClick={handleLogInClick}/>
+        {/* {
+            signUpDone?<AlertSuccess/>:false
+        } */}
         <SocialSignUp/>
         <EmailSignUp handleChange={handleChange} handleClick={handleClick} />
+        
         <FooterSignUp/>
         </Box>
     )

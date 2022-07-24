@@ -3,7 +3,7 @@ import ThreePic from "../../Components/ProductPageComps/ThreePic";
 import { useState } from "react";
 import { useEffect } from "react";
 import Carousel from "../../Components/ProductPageComps/Carousel";
-import "./MenProductPage.css"
+import "./WomenProductPage.css"
 import LeftSd from "../../Components/ProductPageComps/LeftSdComp";
 import ThreePicTwo from "../../Components/ProductPageComps/ThreePicTwo";
 import BeforeProductFooter from "../../Components/ProductPageComps/BeforeProductFooter";
@@ -12,7 +12,7 @@ import BfS from "../../Components/BeforeFooter/BfS";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 import axios from "axios"
 
-export default function MenProductPage(){
+export default function WomenProductPage(){
 
     const [data,setData]=useState([])
     const [dataTwo,setDataTwo]=useState([])
@@ -37,11 +37,11 @@ export default function MenProductPage(){
     }
 
     useEffect(()=>{
-        fetch(`https://yooxdb.herokuapp.com/MenNew?_page=${page}&_limit=3`)
+        fetch(`https://yooxdb.herokuapp.com/WomenNew?_page=${page}&_limit=3`)
         .then((res)=>res.json())
         .then((res)=>setData(res))
         .catch((err)=>console.log(err))
-        fetch(`https://yooxdb.herokuapp.com/MenOne?_page=${pageTwo}&_limit=3`)
+        fetch(`https://yooxdb.herokuapp.com/WomenOne?_page=${pageTwo}&_limit=3`)
         .then((resTwo)=>resTwo.json())
         .then((resTwo)=>setDataTwo(resTwo))
         .catch((errTwo)=>console.log(errTwo))

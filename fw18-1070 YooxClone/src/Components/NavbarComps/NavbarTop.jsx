@@ -1,9 +1,10 @@
 import { Flex, Text,Select, Box, Stack } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 import LogInModal from "../SignUp&LogIn/LogInModal";
 
 import "./NavbarTop.css"
 
-export default function NavbarTop({position,zIndex,top,shadow}){
+export default function NavbarTop({position,zIndex,top,shadow,handleChange,handleClick}){
 
     return(
         <Box className="TopSec" position={position} zIndex={zIndex} top={top} boxShadow={shadow}  >
@@ -18,8 +19,8 @@ export default function NavbarTop({position,zIndex,top,shadow}){
                 <Text fontSize="small" lineHeight="11px" mt="1rem" width="250px" ><b>CUSTOMER CARE</b></Text>
             </Flex>
             <div  className="rightSec" >
-                <Text>REGISTER</Text>
-                <Box><LogInModal/></Box>
+                <NavLink to="/register">REGISTER</NavLink>
+                <Box><LogInModal handleChange={handleChange} handleClick={handleClick}/></Box>
                 
                 
             </div>

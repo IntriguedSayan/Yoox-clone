@@ -16,12 +16,13 @@
 }
 .MiddleText{
     width: 25%;
-    height: 69%;
+    height: 10%;
     background-color: white;
     position: absolute;
     left: 39%;
-    bottom: 50%;
+    bottom: 90%;
 }
 .thirdPic{
     margin-left: 38%;
 }
+
