@@ -1,7 +1,7 @@
 import { Alert, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import AlertSuccess from "../../Components/SignUp&LogIn/AlertSuccess";
-
+import { useToast } from '@chakra-ui/react'
 import EmailSignUp from "../../Components/SignUp&LogIn/EmailSignUp";
 import FooterSignUp from "../../Components/SignUp&LogIn/FooterSignUp";
 import NavbarSignUp from "../../Components/SignUp&LogIn/NavbarSignUp";
@@ -25,6 +25,8 @@ export default function SignUpAndLogInPage(){
     const[signUpDone,setSignUpDone]=useState(false)
     const[logInData,setLogInData]=useState(logInInitData)
     const[logInDone,setLogInDone]=useState(false)
+    const toast=useToast()
+
     const handleChange=(e)=>{
         let valueToUpdate;
         const{name,value,type,checked}=e.target
@@ -44,10 +46,23 @@ export default function SignUpAndLogInPage(){
         console.log(signUpData)
         if(signUpData.firstName.length!==0&&signUpData.email.length!==0&&signUpData.lastName.length!==0&&signUpData.password.length!==0&&signUpData.genStatus!==false&&signUpData.terms!==false){
                 setSignUpDone(true)
-                // alert("Registration Successful")
+                toast({
+                    title: 'Registration Successful.',
+                    description: "Your account has been created Succesfully",
+                    status: 'success',
+                    duration: 9000,
+                    isClosable: true,
+                  })
                 
         }else{
-            alert("PLease Fill all the credentials correctly")
+            // alert("PLease Fill all the credentials correctly")
+            toast({
+                title: 'PLease Fill all the credentials correctly',
+                description: "Please fill all the deatails correctly",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
         }
 
     }
@@ -60,7 +75,19 @@ export default function SignUpAndLogInPage(){
 
     }
     const handleLogInClick=()=>{
-        logInData.email===signUpData.email&&logInData.password===signUpData.password?alert("LogIn Successfull"):alert("Please insert the correct email or password") 
+        logInData.email===signUpData.email&&logInData.password===signUpData.password?toast({
+            title: 'LogIn Successful.',
+            description: "Congrats! Start Shopping",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          }):toast({
+            title: 'PLease enter correct credentials',
+            description: "Please fill the correct credentials",
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          }) 
 
     }
     

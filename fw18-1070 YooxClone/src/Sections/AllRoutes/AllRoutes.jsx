@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import CartPage from "../CartPage/CartPage";
+import DesignerAndArtPage from "../Designer&ArtPage/Designer&Art";
 import HomePage from "../HomepageSection/HomePage";
+import KidsProductPage from "../KidsProductPage/KidsProductPage";
 import MenProductPage from "../MenProductPage/MenProductPage";
 import SignUpAndLogInPage from "../SignUp&LogInPage/SignUp&LogInPage";
 import WomenProductPage from "../WomenProductPage/WomenProductPage";
@@ -14,6 +16,8 @@ export default function AllRoutes(){
             <Route path="/men"  element={<MenProductPage/>}/>
             <Route path="/women" element={<WomenProductPage/>}/>
             <Route path="/cart" element={<CartPage/>}/>
+            <Route path="/kids" element={<KidsProductPage/>}/>
+            <Route path="/designArt" element={<DesignerAndArtPage/>}/>
         </Routes>
     )
 }

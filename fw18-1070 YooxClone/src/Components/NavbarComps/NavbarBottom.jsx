@@ -1,19 +1,19 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
 import "./NavbarBottom.css"
 
 export default function NavbarBottom(){
 
     return(
         <Box className="NavBottom">
-            <h2>NEW ARRIVALS</h2>
-            <h2>DESIGNERS</h2>
-            <h2>CLOTHING</h2>
-            <h2>SHOES </h2>
-            <h2>ACCESSORIES</h2>
-            <h2>8 BY YOOX</h2>
-            <h2>YOOXYGEN</h2>
-            <h2>COLLABORATIONS</h2>
-            <h2>SALE</h2>
+            <Text color={"white"}>NEW ARRIVALS</Text>
+            <Text color={"white"}>DESIGNERS</Text>
+            <Text color={"white"}>CLOTHING</Text>
+            <Text color={"white"}>SHOES </Text>
+            <Text color={"white"}>ACCESSORIES</Text>
+            <Text color={"white"}>8 BY YOOX</Text>
+            <Text color={"white"}>YOOXYGEN</Text>
+            <Text color={"white"}>COLLABORATIONS</Text>
+            <Text color={"white"}>SALE</Text>
         </Box>
     )
 }

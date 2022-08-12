@@ -19,12 +19,12 @@ export default function EmailSignUp({handleChange,handleClick}){
 
     return(
         <Flex className="EmailSign" direction="column">
-            <FormControl>
+            
             <Box className="firstInputGroups">
             <Text as="h1"color="#333" textAlign="center" mb="5%" ><b>OR WITH YOUR EMAIL</b></Text>
             
             <Input type="text" variant="styled" size="lg"  width="400px" name="firstName"
-             m="2% 25% 2% 0" backgroundColor="#f6f6f6" color="black"
+             m="2% 0 2% 2%" backgroundColor="#f6f6f6" color="black"
              _placeholder={{ color: 'inherit' }} onChange={handleChange}
             placeholder="FIRSTNAME*"  />
 
@@ -68,7 +68,7 @@ export default function EmailSignUp({handleChange,handleClick}){
              For further information, please consult the <u>Privacy Policy</u> .</FormLabel></Checkbox>
             </Box>
             <Button size="lg" onClick={handleClick} backgroundColor="#333333" width="400px" color="white" >REGISTER</Button>
-            </FormControl>
+            
         </Flex>
     )
 }

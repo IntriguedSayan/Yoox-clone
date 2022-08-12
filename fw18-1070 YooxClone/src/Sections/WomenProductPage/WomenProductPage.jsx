@@ -33,7 +33,7 @@ export default function WomenProductPage(){
         })
         .then((res)=>console.log(res))
         .catch((err)=>console.log(err))
-
+        alert(`${elem.Brand} added to your cart`)
     }
 
     useEffect(()=>{
@@ -50,7 +50,8 @@ export default function WomenProductPage(){
     return(
             <Box  backgroundColor="#f6f6f6" >
                 <Navbar/>
-                <ThreePic/>
+                <ThreePic src="https://www.yoox.com/images/yoox80/banners/6830_1_HL_DM_US.png?634485886869569819#width=430&height=600"
+                src2="https://www.yoox.com/images/yoox80/banners/5460_1_TheGivingMovement_HL_W.jpg?634485886869569819#width=430&height=600"/>
         <Flex alignItems="center" > 
             <LeftSd txt1="NEW ARRIVALS" txt2="VIEW ALL"/>   
             <Flex id="disp" justify="center" ml="0%" position="relative" gap="2%">

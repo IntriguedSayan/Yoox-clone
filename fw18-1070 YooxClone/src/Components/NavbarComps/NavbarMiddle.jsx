@@ -11,9 +11,9 @@ export default function NavbarMiddle({mt}){
             <Flex justify="center" gap="1rem" >
                 <NavLink to="/women">WOMEN</NavLink>
                 <NavLink to="/men">MEN</NavLink>
-                <h2>KIDS</h2>
+                <NavLink to="/kids">KIDS</NavLink>
                 <h2>/</h2>
-                <h2>DESIGN+ART</h2>
+                <NavLink to="/designArt">DESIGN+ART</NavLink>
             </Flex>
             <Box>
                 <NavLink to="/">

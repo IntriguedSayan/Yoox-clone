@@ -1,13 +1,13 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import "./ThreePic.css"
 
-export default function ThreePic({src,}){
+export default function ThreePic({src,src2}){
 
     return(
         <Box>
         <Flex className="threePic">
             <Box>
-                <Image className="firstPic" src="https://www.yoox.com/images/yoox80/banners/6944_1_DesignerOnSale_HL_M_US.png?634485886869569819#width=430&height=600" />
+                <Image className="firstPic" src={src} />
                 <Flex direction="column"  textAlign="center" ml="48%" w="90%">
                     <Text fontSize="2xl" m="3% 0 3% 0"><b>20% OFF | 25% OFF | 30% OFF</b></Text>
                     <Text m="3% 0 3% 0">Markdown applied in Shopping Bag</Text>
@@ -32,7 +32,7 @@ export default function ThreePic({src,}){
 
             </Flex>
             <Box>
-                <Image className="thirdPic" src="https://www.yoox.com/images/yoox80/banners/5460_1_TheGivingMovement_HL_M.jpg?634485886869569819#width=430&height=600"/>
+                <Image className="thirdPic" src={src2}/>
                 <Flex direction="column" textAlign="center" ml="40%" w="100%">
                     <Text fontSize="2xl" m="3% 0 2% 0"><b>THE GIVING MOVEMENT X YOOX</b></Text>
                     <Text m="3% 0 3% 0">The exclusive capsule collection</Text>

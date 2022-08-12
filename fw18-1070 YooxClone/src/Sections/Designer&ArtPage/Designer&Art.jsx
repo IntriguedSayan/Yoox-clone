@@ -3,7 +3,7 @@ import ThreePic from "../../Components/ProductPageComps/ThreePic";
 import { useState } from "react";
 import { useEffect } from "react";
 import Carousel from "../../Components/ProductPageComps/Carousel";
-import "./MenProductPage.css"
+import "./Designer&Art.css"
 import LeftSd from "../../Components/ProductPageComps/LeftSdComp";
 import ThreePicTwo from "../../Components/ProductPageComps/ThreePicTwo";
 import BeforeProductFooter from "../../Components/ProductPageComps/BeforeProductFooter";
@@ -12,7 +12,10 @@ import BfS from "../../Components/BeforeFooter/BfS";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 import axios from "axios"
 
-export default function MenProductPage(){
+
+
+
+export default function DesignerAndArtPage(){
 
     const [data,setData]=useState([])
     const [dataTwo,setDataTwo]=useState([])
@@ -37,11 +40,11 @@ export default function MenProductPage(){
     }
 
     useEffect(()=>{
-        fetch(`https://yooxdb.herokuapp.com/MenNew?_page=${page}&_limit=3`)
+        fetch(`https://sayan-data.herokuapp.com/DesignNew?_page=${page}&_limit=3`)
         .then((res)=>res.json())
         .then((res)=>setData(res))
         .catch((err)=>console.log(err))
-        fetch(`https://yooxdb.herokuapp.com/MenOne?_page=${pageTwo}&_limit=3`)
+        fetch(`https://sayan-data.herokuapp.com/DesignOne?_page=${pageTwo}&_limit=3`)
         .then((resTwo)=>resTwo.json())
         .then((resTwo)=>setDataTwo(resTwo))
         .catch((errTwo)=>console.log(errTwo))
@@ -50,8 +53,9 @@ export default function MenProductPage(){
     return(
             <Box  backgroundColor="#f6f6f6" >
                 <Navbar/>
-                <ThreePic src="https://www.yoox.com/images/yoox80/banners/6830_1_HL_DM_US.png?634485886869569819#width=430&height=600" 
-                 src2="https://www.yoox.com/images/yoox80/banners/5460_1_TheGivingMovement_HL_M.jpg?634485886869569819#width=430&height=600"/>
+                <ThreePic src={"https://www.yoox.com/images/yoox80/banners/6947_2_HL_DM_US.png?634485886869569819#width=430&height=600"}
+                src2={"https://www.yoox.com/images/yoox80/banners/6824_1_DENIM_T_M_HL.jpg?634485886869569819#width=430&height=600"}
+                />
         <Flex alignItems="center" > 
             <LeftSd txt1="NEW ARRIVALS" txt2="VIEW ALL"/>   
             <Flex id="disp" justify="center" ml="0%" position="relative" gap="2%">
@@ -97,4 +101,5 @@ export default function MenProductPage(){
             </Box>
 
     )
+
 }
