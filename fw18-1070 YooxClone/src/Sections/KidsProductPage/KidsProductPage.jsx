@@ -11,6 +11,7 @@ import Navbar from "../HomepageSection/Navbar";
 import BfS from "../../Components/BeforeFooter/BfS";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 import axios from "axios"
+import { useToast } from "@chakra-ui/react";
 
 export default function KidsProductPage(){
 
@@ -18,6 +19,7 @@ export default function KidsProductPage(){
     const [dataTwo,setDataTwo]=useState([])
     const[page,setPage]=useState(1)
     const [pageTwo,setPAgeTwo]=useState(1)
+    const toast=useToast()
     
     const handleAdd=(id,elem)=>{
         console.log(id,elem)
@@ -31,8 +33,26 @@ export default function KidsProductPage(){
             price:elem.Price,
             Qt:1 
         })
-        .then((res)=>console.log(res))
-        .catch((err)=>console.log(err))
+        .then((res)=>{
+            toast({
+                title: `${elem.Brand+" "+elem.type} added to your cart`,
+                description: "Product Added",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+            console.log(res)})
+        .catch((err)=>{
+            toast({
+                title: 'Something went wrong',
+                description: "Please Try Again",
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
+            
+            console.log(err)
+        })
 
     }
 

@@ -1,7 +1,6 @@
-import { Alert, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useState } from "react";
-import AlertSuccess from "../../Components/SignUp&LogIn/AlertSuccess";
-import { useToast } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react';
 import EmailSignUp from "../../Components/SignUp&LogIn/EmailSignUp";
 import FooterSignUp from "../../Components/SignUp&LogIn/FooterSignUp";
 import NavbarSignUp from "../../Components/SignUp&LogIn/NavbarSignUp";
