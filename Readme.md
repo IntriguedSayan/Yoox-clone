@@ -32,11 +32,6 @@
  
  ### Following are the Screenshots for the reference
 
-- *Landing Page*
-
-  ![Screenshot (901)](Screenshot (669).png)
-
-
 - *Home Page Section*
 
   ![Screenshot (669)](https://user-images.githubusercontent.com/101392591/190845224-63293d57-3cf2-454e-ab76-09679036ccac.png)
