@@ -5,13 +5,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import {Table, Thead,Tbody,Tfoot,Tr,Th,Td,TableCaption,TableContainer,} from '@chakra-ui/react'
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 export default function CartPage(){
 
     
     const[data,setData]=useState([])
-    const[ship,setShip]=useState({stndrd:false,
-                                    exprss:false})
+    const[ship,setShip]=useState({stndrd:false,exprss:false})
     
 let Total;
 const standard=9.49;
@@ -57,16 +57,16 @@ useEffect(()=>{
 
 
             return(
-                <Box>
+                <Box width={"100%"}>
                     <CartPageNav/>
                     <Flex mt="5%" direction="column" >
                         <Heading mb="4%" ml="40%"><Highlight key="shopping Cart" query='SHOPPING CART' styles={{ px: '1', py: '1', bg: 'yellow.200' }}>SHOPPING CART</Highlight></Heading>
-                        <Flex gap="40%">
+                        <Flex gap="40%" mr={"5%"}>
                             <Text width="250px" ml="2%"><b>BACK TO SHOPPING</b></Text>
                            <Flex gap="4%"marginRight="-80%">
                             <Button backgroundColor="yellow" size="lg" width="200px"><Icon as={GrPaypal}/></Button>
                             <Text><b>or</b></Text>
-                            <Button backgroundColor="#333333"><Text color="white">PROCEED WITH YOUR ORDER</Text></Button>
+                            <Button backgroundColor="#333333" ><Text color="white"><NavLink to={"/shipping"}>PROCEED WITH YOUR ORDER</NavLink></Text></Button>
                            </Flex>
                         </Flex>
                     </Flex>
@@ -106,8 +106,8 @@ useEffect(()=>{
                         </Tbody>
                         <Tfoot>
                             <Tr>
-                                <Th><Checkbox name="stndrd" onChange={handleChange}><Text>STANDARD SHIPPING: ${standard}</Text></Checkbox></Th>
-                                <Th><Checkbox name="exprss" onChange={handleChange}><Text>EXPRESS SHIPPING: ${express}</Text></Checkbox></Th>
+                                <Th><Checkbox name="stndrd" disabled={ship.exprss===true} onChange={handleChange}><Text>STANDARD SHIPPING: ${standard}</Text></Checkbox></Th>
+                                <Th><Checkbox name="exprss" disabled={ship.stndrd===true} onChange={handleChange}><Text>EXPRESS SHIPPING: ${express}</Text></Checkbox></Th>
                                 <Th><b>TOTAL</b></Th>
                                 <Th><b>AMOUNT:</b></Th>
                                 <Th><b>${Total=CalculateTotal(data)}</b></Th>
